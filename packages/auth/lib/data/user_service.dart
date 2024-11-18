@@ -10,7 +10,6 @@ class UserService {
       if (userDoc.exists) {
         final userModel = UserModel.fromDocument(
             userDoc.data() as Map<String, dynamic>, userDoc.id);
-        await storeHouseIdInSecureStorage(userModel.houseId);
         await storeUserModel(userModel);
         return userModel;
       } else {
