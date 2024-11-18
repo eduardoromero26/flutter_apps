@@ -1,5 +1,6 @@
 import 'package:auth/module.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:commons/modules.dart';
 
 class UserService {
   Future<UserModel?> getUser(String uid) async {
