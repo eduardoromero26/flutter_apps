@@ -1,0 +1,11 @@
+name: flutter_apps
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  prepare: melos bootstrap && melos run build
+
