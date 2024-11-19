@@ -20,5 +20,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(const AuthState.initial());
       }
     });
+    on<RestartLogin>((event, emit) {
+      emit(const AuthState.initial());
+    });
   }
 }

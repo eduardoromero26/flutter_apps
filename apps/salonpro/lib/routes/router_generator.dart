@@ -1,38 +1,64 @@
 //Switch para generar los nombres de rutas
+import 'package:commons/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:salonpro/main.dart';
-import 'package:salonpro/routes/routes_name.dart';
 import 'package:auth/module.dart';
+import 'package:go_router/go_router.dart';
+import 'package:salonpro/presentation/screens/home_screen.dart';
 
-class RouteGenerator {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case RoutesName.login:
-        return _fadeRoute(const LoginScreen(), RoutesName.login);
-      case RoutesName.splash:
-        return _fadeRoute(const SplashScreen(), RoutesName.splash);
-      case RoutesName.home:
-        return _fadeRoute(const MyHomePage(title: ''), RoutesName.home);
-      default:
-        return _fadeRoute(const MyHomePage(title: ''), RoutesName.home);
-    }
-  }
+final GoRouter router = GoRouter(
+  initialLocation: RoutesName.splash,
+  routes: [
+    GoRoute(
+      path: RoutesName.login,
+      name: RoutesName.login,
+      builder: (context, state) => const LoginScreen(),
+      pageBuilder: (context, state) => _fadeTransitionPage(
+        context: context,
+        state: state,
+        child: const LoginScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RoutesName.splash,
+      name: RoutesName.splash,
+      builder: (context, state) => const SplashScreen(),
+      pageBuilder: (context, state) => _fadeTransitionPage(
+        context: context,
+        state: state,
+        child: const SplashScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RoutesName.home,
+      name: RoutesName.home,
+      builder: (context, state) => const HomeScreen(),
+      pageBuilder: (context, state) => _fadeTransitionPage(
+        context: context,
+        state: state,
+        child: const HomeScreen(),
+      ),
+    ),
+  ],
+  errorPageBuilder: (context, state) => const MaterialPage(
+    child: Scaffold(
+      body: Center(
+        child: Text('Page not found'),
+      ),
+    ),
+  ),
+);
 
-  //funciona para configurar el nombre y url de la ruta --- Añade un fade al transicionar de screen
-  static PageRoute _fadeRoute(Widget child, String routeName) {
-    return PageRouteBuilder(
-        settings: RouteSettings(name: routeName),
-        transitionDuration: const Duration(milliseconds: 200),
-        pageBuilder: (_, __, ___) => child,
-        transitionsBuilder: (_, animation, __, ___) =>
-            //is client use a web device
-            // kIsWeb
-            FadeTransition(opacity: animation, child: child));
-    //slide for smartphones
-    // : CupertinoPageTransition(
-    //     primaryRouteAnimation: animation,
-    //     secondaryRouteAnimation: __,
-    //     linearTransition: true,
-    //     child: child));
-  }
+Page<void> _fadeTransitionPage({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return FadeTransition(opacity: animation, child: child);
+    },
+  );
 }

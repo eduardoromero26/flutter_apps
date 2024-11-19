@@ -1,6 +1,8 @@
 import 'package:auth/module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:commons/modules.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -23,14 +25,15 @@ class _SplashScreenState extends State<SplashScreen> {
         state.maybeWhen(
             orElse: () {},
             loadedSuccess: (userModel) {
-              // Navigator.of(context).pushReplacement(
-              //   MaterialPageRoute(builder: (context) => const HomeScreen()),
-              // );
+              context.pushReplacementNamed(RoutesName.home);
             },
-            loadedFailed: (e) {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
+            loadedFailed: (error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Login failed, $error'),
+                ),
               );
+              context.goNamed(RoutesName.login);
             });
       },
       builder: (context, state) {

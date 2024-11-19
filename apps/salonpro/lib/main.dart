@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salonpro/firebase_options.dart';
 import 'package:salonpro/routes/router_generator.dart';
-import 'package:salonpro/routes/routes_name.dart';
 
 
 
@@ -34,16 +33,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'SalonPro',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: RoutesName.splash,
-      onGenerateRoute: RouteGenerator.generateRoute,
-
+      routerConfig: router,
     );
   }
 }

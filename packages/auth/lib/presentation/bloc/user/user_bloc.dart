@@ -14,8 +14,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       try {
         emit(const UserState.loadingStarted());
         final uid = await SecureStorageService().read(SecureStorageKeys.uid);
-        final userModel = await userService.getUser(uid ?? '');
-        emit(UserState.loadedSuccess(userModel!));
+        final UserModel? userModel = await userService.getUser(uid ?? '');
+        if (userModel != null) {
+          emit(UserState.loadedSuccess(userModel));
+        } else {
+          emit(const UserState.loadedFailed('User not found'));
+        }
       } catch (e) {
         emit(UserState.loadedFailed(e.toString()));
       }

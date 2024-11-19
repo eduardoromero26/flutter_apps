@@ -1,9 +1,22 @@
 import 'package:auth/module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:commons/modules.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  initState() {
+    super.initState();
+    context.read<AuthBloc>().add(const RestartLogin());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +35,12 @@ class LoginScreen extends StatelessWidget {
                     content: Text('Login successfully'),
                   ),
                 );
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (_) => const SplashScreen()));
+                context.goNamed(RoutesName.splash);
               },
               loadedFailed: (error) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Login failed, please try again'),
+                  SnackBar(
+                    content: Text('Login failed, $error'),
                   ),
                 );
               },

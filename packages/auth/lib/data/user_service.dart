@@ -32,11 +32,4 @@ class UserService {
     }
   }
 
-  Future<void> storeHouseIdInSecureStorage(String houseId) async {
-    try {
-      await SecureStorageService().write(SecureStorageKeys.houseId, houseId);
-    } catch (e) {
-      Exception('Error storing house ID: $e');
-    }
-  }
 }
