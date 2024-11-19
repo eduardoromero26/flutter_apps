@@ -13,3 +13,8 @@ class LoginWithEmail extends AuthEvent {
   final String password;
   const LoginWithEmail(this.email, this.password);
 }
+
+class ResetPasswordEvent extends AuthEvent {
+  final String email;
+  const ResetPasswordEvent(this.email);
+}

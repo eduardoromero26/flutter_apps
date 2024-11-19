@@ -23,5 +23,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<RestartLogin>((event, emit) {
       emit(const AuthState.initial());
     });
+    on<ResetPasswordEvent>((event, emit) async {
+      try {
+        emit(const AuthState.loadingStarted());
+        await authService.sendPasswordResetEmail(email: event.email);
+      } catch (e) {
+        emit(AuthState.loadedFailed(e.toString()));
+        emit(const AuthState.initial());
+      }
+    });
   }
 }

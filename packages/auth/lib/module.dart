@@ -14,3 +14,4 @@ export 'presentation/bloc/user/user_bloc.dart';
 //screens
 export 'presentation/screens/login_screen.dart';
 export 'presentation/screens/splash_screen.dart';
+export 'presentation/screens/reset_password_screen.dart';
