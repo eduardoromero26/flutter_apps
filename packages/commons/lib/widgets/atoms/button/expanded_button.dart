@@ -31,9 +31,9 @@ class ExpandedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color bgNormal = bgColor ?? ColorsTheme.accentForest;
+    Color bgNormal = bgColor ?? Theme.of(context).primaryColor;
     Color bgSecondary = bgColor ?? ColorsTheme.primaryCoast;
-    Color borderNormal = borderColor ?? ColorsTheme.accentForest;
+    Color borderNormal = borderColor ?? Theme.of(context).primaryColor;
     Color bgDisabled = ColorsShadesTheme.disabledGray1;
     TextStyle textStyleNormal = textStyle ?? TypographyTheme.fontBtnWhite;
     TextStyle textStyleSecondary =

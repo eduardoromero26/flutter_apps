@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../style/font_styles.dart';
 
 class CustomTextButton extends StatelessWidget {
   final String textButton;
@@ -15,7 +14,7 @@ class CustomTextButton extends StatelessWidget {
       height: 48,
       child: TextButton(
         onPressed: onPressed,
-        child: Text(textButton, style: TypographyTheme.fontBody2ccentBlue2),
+        child: Text(textButton, style: TextStyle(fontSize: 16, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700)),
       ),
     );
   }

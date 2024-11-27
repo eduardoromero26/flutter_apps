@@ -148,8 +148,6 @@ class TypographyTheme {
     color: ColorsTheme.accentForest,
   ));
 
-  static final fontBody2ccentBlue2 =
-      fontBtn.merge(const TextStyle(color: ColorsTheme.accentForest));
   static final fontBody1Placeholder = fontBtn
       .merge(const TextStyle(color: ColorsShadesTheme.placeholderText))
       .copyWith(fontSize: 16);

@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Flutter Run -&gt; 'dra_magaly_web'" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="filePath" value="$PROJECT_DIR$/apps\\dra_magaly_web\lib\main.dart" />
+    <method v="2" />
+  </configuration>
+</component>

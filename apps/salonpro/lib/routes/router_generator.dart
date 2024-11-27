@@ -14,7 +14,10 @@ final GoRouter router = GoRouter(
         pageBuilder: (context, state) => _fadeTransitionPage(
               context: context,
               state: state,
-              child: const LoginScreen(),
+              child: const LoginScreen(
+                appTitle: 'SalonPro',
+                imageUrl: 'https://2356021.fs1.hubspotusercontent-na1.net/hubfs/2356021/mujer-morena-arreglandose-pelo.webp',
+              ),
             ),
         routes: [
           GoRoute(
