@@ -15,7 +15,8 @@ final GoRouter router = GoRouter(
               context: context,
               state: state,
               child: const LoginScreen(
-                appTitle: 'SalonPro',
+                title: 'Bienvenido a SalonPro',
+                description: 'Directorio de salones de belleza en México.',
                 imageUrl: 'https://2356021.fs1.hubspotusercontent-na1.net/hubfs/2356021/mujer-morena-arreglandose-pelo.webp',
               ),
             ),

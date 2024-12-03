@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "210542296187",
+    "project_id": "medicos-honestos",
+    "storage_bucket": "medicos-honestos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210542296187:android:bdf992a9734757131cb6de",
+        "android_client_info": {
+          "package_name": "com.medicoshonestos.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBltSwEYZ-AQHN5d2en4pTZbuVLheZky-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

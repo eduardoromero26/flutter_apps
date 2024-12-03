@@ -11,11 +11,12 @@ import 'package:go_router/go_router.dart';
 import 'package:commons/modules.dart';
 
 class LoginScreen extends StatelessWidget {
-  final String appTitle;
+  final String title;
+  final String? description;
   final String? imageUrl;
   final String? logoUrl;
   const LoginScreen(
-      {super.key, required this.appTitle, this.imageUrl, this.logoUrl});
+      {super.key, required this.title, this.description, this.imageUrl, this.logoUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,8 @@ class LoginScreen extends StatelessWidget {
                   builder: (context, constraints) => SingleChildScrollView(
                       child: constraints.maxWidth <= 880
                           ? LoginColumnView(
-                              appTitle: appTitle,
+                              title: title,
+                              description: description,
                               imageUrl: imageUrl,
                               formKey: formKey,
                               primaryColor: primaryColor,
@@ -62,7 +64,8 @@ class LoginScreen extends StatelessWidget {
                               primaryColor: primaryColor,
                               imageUrl: imageUrl,
                               logoUrl: logoUrl,
-                              appTitle: appTitle,
+                              title: title,
+                              description: description,
                               formKey: formKey,
                               emailController: emailController,
                               passwordController: passwordController)),
@@ -87,7 +90,8 @@ class LoginRowView extends StatelessWidget {
     required this.primaryColor,
     required this.imageUrl,
     required this.logoUrl,
-    required this.appTitle,
+    required this.title,
+    this.description,
     required this.formKey,
     required this.emailController,
     required this.passwordController,
@@ -97,7 +101,8 @@ class LoginRowView extends StatelessWidget {
   final Color primaryColor;
   final String? imageUrl;
   final String? logoUrl;
-  final String appTitle;
+  final String title;
+  final String? description;
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -178,7 +183,8 @@ class LoginRowView extends StatelessWidget {
                   child: Column(
                     children: [
                       LoginForm(
-                        appTitle: appTitle,
+                        title: title,
+                        description: description,
                         formKey: formKey,
                         emailController: emailController,
                         passwordController: passwordController,
@@ -203,7 +209,8 @@ class LoginColumnView extends StatelessWidget {
     required this.primaryColor,
     required this.emailController,
     required this.passwordController,
-    required this.appTitle,
+    required this.title,
+    this.description,
     this.imageUrl,
     this.logoUrl,
   });
@@ -213,7 +220,8 @@ class LoginColumnView extends StatelessWidget {
   final BoxConstraints constraints;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final String appTitle;
+  final String title;
+  final String? description;
   final String? imageUrl;
   final String? logoUrl;
 
@@ -264,11 +272,12 @@ class LoginColumnView extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 32,
         ),
         LoginForm(
-            appTitle: appTitle,
+            title: title,
+            description: description,  
             formKey: formKey,
             emailController: emailController,
             passwordController: passwordController)
@@ -283,13 +292,15 @@ class LoginForm extends StatelessWidget {
     required this.formKey,
     required this.emailController,
     required this.passwordController,
-    required this.appTitle,
+    required this.title,
+    this.description,
   });
 
   final GlobalKey<FormState> formKey;
   final TextEditingController emailController;
   final TextEditingController passwordController;
-  final String appTitle;
+  final String title;
+  final String? description;
 
   @override
   Widget build(BuildContext context) {
@@ -303,13 +314,13 @@ class LoginForm extends StatelessWidget {
           children: [
             Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Welcome to $appTitle',
+                child: Text(title,
                     style: TypographyTheme.fontH3)),
             const SizedBox(height: 8),
-            const Align(
+             Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                    'Please use your credential to login to your account and manage your business.',
+                    description ?? '',
                     style: TypographyTheme.fontH5)),
             const SizedBox(height: 12),
             // CustomAutoSuggestTextFormField(

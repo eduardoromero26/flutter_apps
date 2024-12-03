@@ -28,6 +28,44 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        }, {
+            "name": "ed_portfolio",
+            "cwd": "apps\\ed_portfolio",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "ed_portfolio (profile mode)",
+            "cwd": "apps\\ed_portfolio",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "ed_portfolio (release mode)",
+            "cwd": "apps\\ed_portfolio",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }, {
+            "name": "medical_link_tree",
+            "cwd": "apps\\medical_link_tree",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "medical_link_tree (profile mode)",
+            "cwd": "apps\\medical_link_tree",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "medical_link_tree (release mode)",
+            "cwd": "apps\\medical_link_tree",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         },
         {
             "name": "auth",
